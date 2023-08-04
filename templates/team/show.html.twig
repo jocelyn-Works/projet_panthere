@@ -1,0 +1,39 @@
+
+{% extends "base.html.twig" %}
+{% block title %}Projet Panthère{% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/show.css')}}">
+            
+        {% endblock %}
+    {% block body %}
+        
+        <div class="show-container">
+            &nbsp;
+            <div class="profil">
+                <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
+            </div>
+            <div class="containte">
+                &nbsp;
+                <h1>{{ team.fullname }} : {% for position in team.positions %}
+                {{ position.label}}
+                {% endfor %} </h1>
+            
+                &nbsp;
+                <h2>Age : {{ team.age }}</h2>
+                &nbsp;
+                <h3>Adresse : {{ team.adresse}}</h3>
+                &nbsp;
+                <h4>Telephone : {{ team.phone}}</h4>
+                &nbsp;
+                <h4>Email : {{ team.email}}</h4>
+                &nbsp;
+                <div class="PDF">
+                <h4><a  href="{{ asset( team.cv) }}"download/Download File>CV (PDF)</a></h4>
+                </div>
+                <div class="btn-modifier">
+                <a href="{{ path('team_edit', { "id": team.id }) }}"   >Modifier</a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

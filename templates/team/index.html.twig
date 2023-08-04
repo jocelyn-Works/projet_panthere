@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet Panthère{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/team.css')}}">
+
+{% endblock %}
+
+{% block body %}
+{# {{ dump() }} #}
+<div class="container-1" >
+  <div class="btn-msg">
+    <div class="button-78">
+      <a href="{{ path('team_new') }}" >Ajouter un Collaborateur</a>
+    </div>
+      {% for message in app.flashes('Success') %}
+      <div class="alert alert-success mt-4 mx-4">
+          {{ message }}
+      </div>
+  {% endfor %}
+  </div>
+    
+  
+  <div class="profil">
+    <div class="profil-hierarchie">
+      <div class="hierarchie">
+      {% for team in team11  %}
+            <a  href="{{ path('team_show', {"id": team.id}) }}">
+              <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
+              <h4>{{ team.fullname }}
+                
+            {% for position in team.positions %}
+              <div class="position">({{ position.label}})</div>
+            {% endfor %}</h4>
+          </a>
+    {% endfor %}
+    </div>
+  </div>
+    <div class="profil-hierarchie">
+    {% for team in team10  %}
+          <a  href="{{ path('team_show', {"id": team.id}) }}">
+            <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
+            <h4>{{ team.fullname }}
+              
+          {% for position in team.positions %}
+            <div class="position">({{ position.label}})</div>
+          {% endfor %}</h4>
+        </a>
+  {% endfor %}
+</div>
+<div class="profil-hierarchie">
+  {% for team in team9  %}
+        <a  href="{{ path('team_show', {"id": team.id}) }}">
+          <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
+          <h4>{{ team.fullname }}
+            
+        {% for position in team.positions %}
+          <div class="position">({{ position.label}})</div>
+        {% endfor %}</h4>
+      </a>
+{% endfor %}
+</div>
+<div class="profil-hierarchie">
+  {% for team in team8  %}
+        <a  href="{{ path('team_show', {"id": team.id}) }}">
+          <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
+          <h4>{{ team.fullname }}
+            
+        {% for position in team.positions %}
+          <div class="position">({{ position.label}})</div>
+        {% endfor %}</h4>
+      </a>
+{% endfor %}
+</div>
+  </div>
+    
+</div>
+{% endblock %}

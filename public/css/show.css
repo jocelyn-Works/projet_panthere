@@ -1,0 +1,134 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    width: 100%;
+}
+
+.show-container{
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 15vh 20% 2vh 20%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 15px;
+}
+.containte{
+    margin-top: 10vh;
+    line-height:35px;
+}
+
+.profil{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 9%;
+    
+}
+.profil-img{
+    
+    width:210px;
+    height: 210px;
+    border-radius: 50%;
+    border: 3px solid rgb(233,84,32);
+    
+}
+h1,h2, h3, h4,a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.PDF a{
+    text-decoration:none;
+    font-size: xx-large;
+    color: white;
+}
+.PDF{
+    margin-left: 40%;
+    margin-right: 41%;
+    background-color: rgb(233,84,32);
+    font-size: 35px;
+    border: none;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.PDF:hover{
+    transform: scale(1.15);
+    color: white;
+}
+
+.btn-modifier a {
+    text-decoration:none;
+    
+}
+.btn-modifier:hover{
+    color: white;
+}
+
+.btn-modifier {
+    margin-top:3vh ;
+    margin-left: 40%;
+    margin-right: 40%;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    border: 3px solid rgb(233,84,32);
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+  }
+  
+  .btn-modifier:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    color: white;
+    background-color: rgb(233,84,32);
+    z-index: -1;
+  }
+  
+  .btn-modifier:hover, .btn-modifier:focus {
+    color: white;
+  }
+  
+  .btn-modifier:hover:before, .btn-modifier:focus:before {
+    transition: 0.5s all ease;
+    color: white;
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+  
+  .btn-modifier:active {
+    transform: scale(0.9);
+    color: white;
+  }
+
+
+
+

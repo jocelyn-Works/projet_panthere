@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet Panthère{% endblock %}
+
+{% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/home.css')}}">
+            
+        {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron mx-4 my-5">
+
+   
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+      <h1 class="display-4">Bonjour{{user.firstname}}, Bienvenue sur Projet Panthère !</h1>
+      {% else %}
+      <h1 class="display-4">Bonjour et Bienvenue sur Projet Panthère !</h1>
+      {% endif %}
+        
+        <hr class="my-4">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        
+        <p class="lead d-flex justify-content-center">
+        <a class="btn btn-primary btn-lg m-4 " href="{{path('team')}}">Organigrame</a>
+        </p>
+        {% else %}
+        <h4>Pour commencer, rendez-vous sur la page d'inscription où de connexion pour utiliser l'application.</h4>
+        <p class="lead d-flex-row justify-content-center">
+          <a class="btn btn-primary btn-lg m-4   " href="{{path('inscription')}}" role="button">Inscription</a>
+          <a class="btn btn-primary btn-lg m-4   " href="{{path('connexion')}}" role="button">Se connecter</a>
+        </p>
+        {% endif %} 
+      </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet Panthère{% endblock %}
+
+{% block body %}
+
+<form action="{{path('connexion')}}" method="post" class="container  mx-5">
+
+            <h1 class="p-3">Connexion</h1>
+
+            <label for="email" class="col-sm-2 col-form-label mx-5">Email</label>
+            <input type="text" name="_username" id="email" value="{{username}}" class="form-control mx-5">
+
+            <label for="password" class="col-sm-2 col-form-label mx-5">Mot de passe </label>
+            <input type="password" name="_password" id="password" class="form-control mx-5">
+
+            <label for="" class="col-sm-2 col-form-label mx-5">Se souvenir de moi
+                <input type="checkbox" name="_remember_me" id="" class="col-sm-2 col-form-label mx-5">
+            </label>
+            <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}">
+            <button class="btn btn-primary my-3 mx-5">Se connecter</button>
+        </form>
+
+        {% if error %}
+            <div class="mx-4">{{error.messageKey | trans(error.messageData, 'security')}}</div>
+        {% endif %}
+{% endblock %}
