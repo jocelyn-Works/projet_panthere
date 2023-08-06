@@ -25,7 +25,7 @@ class Team
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[ORM\ManyToMany(targetEntity: Position::class, mappedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Position::class, inversedBy: 'teams')]
     private Collection $positions;
 
     #[ORM\Column(length: 100)]
@@ -46,8 +46,6 @@ class Team
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $hierarchie = null;
 
     
 
@@ -189,15 +187,5 @@ class Team
         return $this;
     }
 
-    public function getHierarchie(): ?string
-    {
-        return $this->hierarchie;
-    }
-
-    public function setHierarchie(?string $hierarchie): static
-    {
-        $this->hierarchie = $hierarchie;
-
-        return $this;
-    }
+  
 }

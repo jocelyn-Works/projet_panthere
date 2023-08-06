@@ -20,12 +20,12 @@ class Position
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
-    #[ORM\ManyToMany(targetEntity: Team::class, inversedBy: 'positions')]
-    private Collection $users;
+    #[ORM\ManyToMany(targetEntity: Team::class, mappedBy: 'positions')]
+    private Collection $teams;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->teams = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,13 +50,13 @@ class Position
      */
     public function getUsers(): Collection
     {
-        return $this->users;
+        return $this->teams;
     }
 
     public function addUser(Team $user): static
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
+        if (!$this->teams->contains($user)) {
+            $this->teams->add($user);
         }
 
         return $this;
@@ -64,7 +64,34 @@ class Position
 
     public function removeUser(Team $user): static
     {
-        $this->users->removeElement($user);
+        $this->teams->removeElement($user);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Team>
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): static
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams->add($team);
+            $team->addPosition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): static
+    {
+        if ($this->teams->removeElement($team)) {
+            $team->removePosition($this);
+        }
 
         return $this;
     }

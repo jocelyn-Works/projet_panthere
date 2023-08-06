@@ -19,19 +19,15 @@ use App\Service\UploaderCV;
 class TeamController extends AbstractController
 {
     #[Route('/team', name: 'team' , methods: ['GET'])]
-    public function team(TeamRepository $repository, PositionRepository $positionRepository ): Response
+    public function team( PositionRepository $positionRepository ): Response 
     {
 
-        $team11 = $repository->findBy(['hierarchie' => 11]);
-        $team10 = $repository->findBy(['hierarchie' => 10]);  // repository pour retrouver tous nos collaborateur dans la BDD dans team
-        $team9 = $repository->findBy(['hierarchie' => 9]);
-        $team8 = $repository->findBy(['hierarchie' => 8]);
+        $positions = $positionRepository->findAll();
+        
 
         return $this->render('team/index.html.twig', [
-            'team11' => $team11,
-            'team10' => $team10, 
-            'team9' => $team9,
-            'team8' => $team8,
+            'positions' => $positions,
+            
         ]);
     }
 
@@ -40,12 +36,14 @@ class TeamController extends AbstractController
      UploaderPicture $uploaderPicture, UploaderCV $uploaderCV ):Response  //   function por crée un collaborateur
     {
         $newTeam = new Team();  // crée un nouveau collaborateur
+        $position = new Position();
         $teamForm = $this->createForm(TeamType::class, $newTeam);  // utiliser le formulaire TeamType relié a la BDD team
+        $newTeam->addPosition($position);
         $teamForm->handleRequest($request); // vlidation des donné du formulaire
         if ($teamForm->isSubmitted() && $teamForm->isValid()) { // si le formulaire est valid et soumis alors ->
-           //  dd($newTeam);
+           // dd($newTeam);
 
-            $position = new Position();
+            $position = $teamForm->get('position')->getData();
             $position->setLabel($teamForm->get('hierarchie')->getData());
 
             if($uploaderPicture){  // si on a une photo a télecharger
@@ -67,7 +65,6 @@ class TeamController extends AbstractController
 
 
             $em->persist($newTeam); // on prépare un nouveu collaborateurs a etre en BDD
-            
             $em->flush();  // on enregistre en BDD
 
             $this->addFlash(  // addFlash va nous retouner un message si la création a été reussie

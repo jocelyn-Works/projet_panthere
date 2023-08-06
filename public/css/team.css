@@ -5,9 +5,8 @@
 body{
     width: 100%;
 }
-.container-1{
+.container-organigrame{
 width: 100%;
-/* height: 140vh; */
 display: flex;
 flex-direction: column;
 }
@@ -19,33 +18,76 @@ flex-direction: column;
     margin: 3vh 0 10vh 0;
     padding-left: 32%;
 }
-.profil a{
-    text-decoration:none;
+.message-app-flash{
+  width: 50%;
+  height: 5vh;
+  border: 2px solid  rgb(19, 136, 19);
+  border-radius: 10px;
+  text-align: center;
+  background-color: #88e47a;
+  flex-direction: row;
+  justify-content: center;
+  color: rgb(19, 136, 19);
+  margin: 3vh 0 20vh 0;
 }
-.profil{
-    width: 100%;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    margin-top: 4vh;
-}
-.profil-img {
+
+.profil-img{
     border-radius: 50%;
     border: 3px solid rgb(233,84,32);
     margin-bottom: 1vh; 
+    align-items: center;
 }
-.profil-hierarchie{
+.organigrame {
   width: 100%;
-  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rang-1,
+.rang-2,
+.rang-3,
+.rang-4 {
+
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  align-items: center;
 }
-.position{
-    display: flex;
-    flex-direction: row; 
-    justify-content: center;
+.rang-1{
+  justify-content: center;
+  
 }
+.rang-2{
+  justify-content: center;
+}
+.rang-3{
+  margin-left: 6rem;
+}
+.rang-4{
+  margin-left: 6.5rem;
+}
+
+.rang-1 a,
+.rang-2 a,
+.rang-3 a,
+.rang-4 a{
+  text-decoration: none;
+}
+.team-item {
+  margin: 10px;
+  text-align: center;
+}
+.team-item p {
+font-size: large;
+}
+
+
+
+
+
+
+
+
 .button-78 a{
     text-decoration:none;
 

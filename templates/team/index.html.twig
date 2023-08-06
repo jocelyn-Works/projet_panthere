@@ -10,71 +10,84 @@
 
 {% block body %}
 {# {{ dump() }} #}
-<div class="container-1" >
+<div class="container-organigrame" >
   <div class="btn-msg">
     <div class="button-78">
       <a href="{{ path('team_new') }}" >Ajouter un Collaborateur</a>
     </div>
       {% for message in app.flashes('Success') %}
-      <div class="alert alert-success mt-4 mx-4">
+      <div class="message-app-flash">
           {{ message }}
       </div>
   {% endfor %}
   </div>
     
   
-  <div class="profil">
-    <div class="profil-hierarchie">
-      <div class="hierarchie">
-      {% for team in team11  %}
-            <a  href="{{ path('team_show', {"id": team.id}) }}">
-              <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
-              <h4>{{ team.fullname }}
-                
-            {% for position in team.positions %}
-              <div class="position">({{ position.label}})</div>
-            {% endfor %}</h4>
+  <div class="organigrame">
+    <div class="rang-1">
+      {% for position in positions %}
+      {% if position.label == 'Gérant' %}
+        {% for team in position.teams %}
+          <a href="{{ path('team_show', {"id": team.id}) }}">
+            <div class="team-item">
+              <img class="profil-img" src="{{asset(team.imageName)}}" alt="">
+              <h3>{{ team.fullname }}</h3>
+              <p>({{position.label}})</p>
+            </div>
           </a>
-    {% endfor %}
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+    <div class="rang-2">
+      {% for position in positions %}
+      {% if position.label == 'Commercial' or position.label == 'Comptabillité' or position.label == 'Lead Dev' %}
+        {% for team in position.teams %}
+          <a href="{{ path('team_show', {"id": team.id}) }}">
+            <div class="team-item">
+              <img class="profil-img" src="{{asset(team.imageName)}}" alt="">
+              <h3>{{ team.fullname }}</h3>
+              <p>({{position.label}})</p>
+            </div>
+          </a>
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+    <div class="rang-3">
+      {% for position in positions %}
+      {% if position.label == 'Dev' or position.label == 'UI/UX' %}
+        {% for team in position.teams %}
+          <a href="{{ path('team_show', {"id": team.id}) }}">
+            <div class="team-item">
+              <img class="profil-img" src="{{asset(team.imageName)}}" alt="">
+              <h3>{{ team.fullname }}</h3>
+              <p>({{position.label}})</p>
+            </div>
+          </a>
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  
+    <div class="rang-4">
+      {% for position in positions %}
+      {% if position.label == 'Stagiaire' %}
+        {% for team in position.teams %}
+          <a href="{{ path('team_show', {"id": team.id}) }}">
+            <div class="team-item">
+              <img class="profil-img" src="{{asset(team.imageName)}}" alt="">
+              <h3>{{ team.fullname }}</h3>
+              <p>({{position.label}})</p>
+            </div>
+          </a>
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
     </div>
   </div>
-    <div class="profil-hierarchie">
-    {% for team in team10  %}
-          <a  href="{{ path('team_show', {"id": team.id}) }}">
-            <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
-            <h4>{{ team.fullname }}
-              
-          {% for position in team.positions %}
-            <div class="position">({{ position.label}})</div>
-          {% endfor %}</h4>
-        </a>
-  {% endfor %}
-</div>
-<div class="profil-hierarchie">
-  {% for team in team9  %}
-        <a  href="{{ path('team_show', {"id": team.id}) }}">
-          <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
-          <h4>{{ team.fullname }}
-            
-        {% for position in team.positions %}
-          <div class="position">({{ position.label}})</div>
-        {% endfor %}</h4>
-      </a>
-{% endfor %}
-</div>
-<div class="profil-hierarchie">
-  {% for team in team8  %}
-        <a  href="{{ path('team_show', {"id": team.id}) }}">
-          <img  class="profil-img" src="{{asset(team.imageName)}}" alt="">
-          <h4>{{ team.fullname }}
-            
-        {% for position in team.positions %}
-          <div class="position">({{ position.label}})</div>
-        {% endfor %}</h4>
-      </a>
-{% endfor %}
-</div>
-  </div>
-    
+
 </div>
 {% endblock %}

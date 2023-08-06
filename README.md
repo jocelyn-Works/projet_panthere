@@ -5,7 +5,17 @@ decrire le projet
 - Symfony
 - MySQL
 - Doctrine
+- Twig
+- Asset
+- Maker  ( controller \ entity \ form )
+- Form validator 
+- Security
+- Translation 
 
 ## Fonctionnalites
-- editer
-- afficher
+- editer 
+- modifier
+- afficher un organigrame
+- afficher un profil
+- inscription utilisateurs
+- connexion utilisateurs

@@ -2,10 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Position;
 use Symfony\Component\Form\AbstractType;
 use App\Entity\Team;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -81,9 +79,9 @@ class TeamType extends AbstractType
                     'class' => 'form-label mt-4'
                 ],
             ])
-            ->add('hierarchie', ChoiceType::class, [
+            ->add('positions', ChoiceType::class, [
                 'attr' => [
-                    // 'class' => 'form-control',
+                    'class' => 'form-control',
                 ],
                 'label' => 'Poste : ',
                 'label_attr' => [
@@ -91,14 +89,16 @@ class TeamType extends AbstractType
                 ],
                 'choices'  => [
                     'Gérant' => "1",
-                    'Lead Dev' => "4",
                     'Commercial' => "2",
                     'Comptabillité' => "3",
+                    'Lead Dev' => "4",
                     'Dev' => "5",
-                    'UI/UX' => "9",
-                    'Stagiaire' => "8",
+                    'UI /UX' => "6",
+                    'Stagiaire' => "7",
                 ],
                 ])
+
+
             ->add('CV', FileType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -136,6 +136,10 @@ class TeamType extends AbstractType
             ])
           
             ->add('imageFile',FileType::class,[
+                'attr' => [
+                    'class' => 'form-control',
+                    
+                ],
                 'label' => 'Image de Profile',
                 'mapped' => false,
                 'required' => false,
@@ -150,16 +154,6 @@ class TeamType extends AbstractType
                             'class' => 'form-label mt-4'
                         ],
             ] )
-            // ->add('positions', TextType::class, [  // firstname = le nom de la table , TextType = ce sera du text
-            //     'attr' => [
-            //         'class' => 'form-control',  // la class de l'input
-                    
-            //     ],
-            //     'label' => 'Positions :',  // son label
-            //     'label_attr' => [
-            //         'class' => 'form-label mt-4'  // la class du label
-            //     ],
-            // ])
         ;
     }
 
