@@ -13,9 +13,9 @@ decrire le projet
 - Translation 
 
 ## Fonctionnalites
-- editer 
-- modifier
-- afficher un organigrame
+- editer "ROLE_ADMIN"
+- modifier "ROLE_ADMIN"
+- afficher un organigramme
 - afficher un profil
 - inscription utilisateurs
 - connexion utilisateurs

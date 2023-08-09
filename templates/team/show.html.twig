@@ -31,9 +31,11 @@
                 <div class="PDF">
                 <h4><a  href="{{ asset( team.cv) }}"download/Download File>CV (PDF)</a></h4>
                 </div>
+                {% if is_granted('ROLE_ADMIN') %}
                 <div class="btn-modifier">
                 <a href="{{ path('team_edit', { "id": team.id }) }}"   >Modifier</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     {% endblock %}

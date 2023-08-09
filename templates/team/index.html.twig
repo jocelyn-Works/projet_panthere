@@ -12,9 +12,11 @@
 {# {{ dump() }} #}
 <div class="container-organigrame" >
   <div class="btn-msg">
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="button-78">
       <a href="{{ path('team_new') }}" >Ajouter un Collaborateur</a>
     </div>
+    {% endif %}
       {% for message in app.flashes('Success') %}
       <div class="message-app-flash">
           {{ message }}
