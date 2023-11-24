@@ -1,5 +1,5 @@
 # Projet Panthere
-decrire le projet
+Organigramme d'entreprise avec les différents niveaux hiérarchiques.
 
 ## Stack
 - Symfony
